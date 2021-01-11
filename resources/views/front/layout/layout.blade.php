@@ -62,35 +62,35 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a href="{{url('about')}}">About</a>
+                            <a class="nav-link" href="{{url('about')}}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('portfolio')}}">Portfolio</a>
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" class="nav-link" href="{{url('service')}}">Services</a>
                         </li>
 
                         <div class="visit"> <a href="https://naptechgames.com">Visit Us</a> </div>
                         <li class="nav-item">
-                            <a href="{{url('service')}}">Services</a>
+                            <a class="nav-link" href="https://naptechgames.com" target="_blank"> Games</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{url('portfolio')}}">Portfolio</a>
-                        </li>  
-                       <li class="nav-item">
+                       {{-- <li class="nav-item">
                             <a href="{{url('apply-now')}}">Apply</a>
-                        </li>
+                        </li>--}}
                         <li class="nav-item">
-                            <a href="https://naptechgames.com" target="_blank"> Games</a>
+                            <a class="nav-link" href="{{url('career')}}">Career</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{url('career')}}">Career</a>
-                        </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{url('blog')}}">Blog</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="{{url('contact-us')}}">Blog Another</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="{{url('connect')}}">Connect</a>
-                        </li>
+                            <a class="nav-link" href="{{url('connect')}}">Connect</a>
+                        </li> 
                     </ul>
                 </div>
             </nav>
@@ -104,6 +104,91 @@
 
         </div>
     </div>
+
+    <section id="contact" class="mb-100">
+        <div class="container">
+          <section>
+            <div class="container">
+                <div class="row m-auto">
+                    <div class="col-md-12 col-lg-6 mb-5">
+                        <div class="form__area">
+                            <h2>Get A free Consultation</h2>
+                            <p>Get a Guranted call Back In 24 Ours</p>
+                            <form action="#" class="form">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Full Name" class="input__field" required>
+                                    <i class="fa fa-user form__icon"></i>
+    
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email" class="input__field" required>
+                                    <i class="fa fa-envelope form__icon"></i>
+    
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" placeholder="Passswod" class="input__field" required>
+                                    <i class="fa fa-phone form__icon"></i>
+    
+                                </div>
+    
+                                <div class="form-group">
+                                    <span id="filename">Upload Your File</span>
+                                    <label for="file-upload" class="upload"><i
+                                            class="fas fa-cloud-upload-alt msg"></i>&nbsp;
+                                        Browse <input type="file" id="file-upload">
+                                    </label>
+                                </div>
+                                <input type="submit" value="submit" class="sub__btn form-control">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 image">
+                        <img src="assets/images/blog/consult__img.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+    
+    
+    
+        </div>
+        </div>
+    </section>
+    <!--============== CONTACT SECTION END =============== -->
+    
+    <!-- ================COUNTRY SECTION START=================================== -->
+    <section id="country" class="mb-50">
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="usa-flag">
+                        <img src="assets/images/usa-flag.png" alt="usa flag">
+                        <div class="details">
+                            <h5>RAVENDALE COURT 143-145 PAYNES ROAD,</h5>
+                            <h5>HAMPSHIRE, SOUTHAMPTON, UK</h5>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="bd-flag">
+                        <img src="assets/images/bd-flag.png" alt=" bd flag">
+                        <div class="details">
+                            <h5>NAHAR PLAZA (SUITE-703A), 26 SONARGAON ROAD, HATIRPOOL,</h5>
+                            <h5>DHAKA-1000, BANGLADESH.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+    <!-- ================COUNTRY SECTION END=================================== -->
+    
+
+
     <!-- ================FOOTER SECTION START=================================== -->
     <section id="footer">
         <div class="container">

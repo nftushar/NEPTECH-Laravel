@@ -39,14 +39,17 @@ class PostController extends Controller
         'title'       => 'required',
         'short_desc'  => 'required',
         'lond_desc'   => '',
-        'image'       => 'required|mimes:jpg,jpeg,png',
-        'post_date'   => 'required'
+        'image'       => 'required|image',
+        'post_date'   => ''
     ]);
+
+    if($request->hasFile('image')){
+
                 $image = $request->file('image');
                 $ext = $image->getClientOriginalExtension();
                 $file = time() . '.' . $ext;
                 $image->move('uploads/post', $file);
-
+    }
                 $data = array(
                 'title' => $request->input('title'),
                 'short_desc' => $request->input('short_desc'),
@@ -56,23 +59,22 @@ class PostController extends Controller
                 'status' => 1,
                 'added_on' => date('Y-m-d')
             );
-print_r($data);
-            // $data_save= DB::table('posts')->insert($data);
+       
+// print_r($data);
 
-            // $request->session()->flash('msg', 'page Update');
-            // return redirect('PostList');
+            $request->session()->flash('msg', 'post Update');
+            return redirect('PostList');
             // return back()->with('msg','Update');
 
-            // dd($data);
             
-            // $data_update= DB::table('posts')->insert($data);
-            // if($data_update){
-            //     echo"Upp";
-            // }else{
-            //     echo"Can not";
-            // }
-            // $request->session()->flash('msg', 'page UUUUUPP');
-            // return redirect('PostList');
+            $data_update= DB::table('posts')->insert($data);
+            if($data_update){
+                echo"Upp";
+            }else{
+                echo"Can not";
+            }
+            $request->session()->flash('msg', 'page UUUUUPP');
+            return redirect('PostList');
    }
 
     function submit(Request $request)

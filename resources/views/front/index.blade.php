@@ -9,7 +9,7 @@
                             <h1 class="mb-25">Nap Tech Labs</h1>
                         </div>
 
-                        <h2 class="type mb-25"><span class="element"></span></h2>
+                        <h2 class="type mb-25"><span class="element">AAAAAAAAAAAAAAA</span></h2>
 
                         <p class="b-text">Take A Sip Of Success With Digital Solutions, Crafted Just For You</p>
                         <div class="together">
