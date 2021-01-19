@@ -10,17 +10,13 @@ class PortfolioController extends Controller
 {
     function listing()
     {
-        // echo"Helloxx";
         $data =  Portfolio::all();
-        // dd($data);
           return view('admin.Portfolio.Portfolio_list',['Allportfolio'=>$data]);
      }
 
      function show()
      {
-        //  echo"Hello";
          $data =  Portfolio::all();
-        //   echo($data);
         return view('front.portfolio',['Allportfolio'=>$data]);
     
       }
@@ -28,7 +24,6 @@ class PortfolioController extends Controller
     
    function delete(Request $request, $id)
    {
-    //    echo"Delete";
        DB::table('portfolios')->where('id', $id)->delete();
        $request->session()->flash('msg', 'Data Delete');
        return redirect('portfolio-list');
@@ -62,14 +57,57 @@ class PortfolioController extends Controller
     // dd($data);
 
      $data_save = DB::table('portfolios')->insert($data);
-//  dd($data_save);
-    //  if($data_save){
-    //      echo"data seved";
-    //  }else{
-    //     echo"data not seved";
-    //  }
+
      $request->session()->flash('msg', 'List saved');
      return redirect('portfolio-list');
    
    }
+
+
+   function edit($id)
+   {
+       $data= Portfolio::find($id); 
+       return view('admin.portfolio.portfolio_edit',compact('data'));
+       
+   }
+
+
+
+   function update(Request $request, $id)
+   {
+    $request->validate([
+        'title' => 'required',
+        'short_desc' => 'required',
+        'image' => 'required',
+        '' => 'required',
+        'colour' => 'required',
+     
+    ]);
+
+        $data_update= Post::find($id);
+        $data_update->title      = $request->input('title');
+        $data_update->short_desc = $request->input('short_desc');
+        $data_update->link  = $request->input('link');
+        $data_update->status     = 1;
+        $unlinkImage = $data_update->image;
+
+
+
+      if($request->has('image')){
+          $request->validate([
+            'image'       => 'mimes:jpg,png,jpeg,gif',
+          ]);
+          unlink(public_path('uploads/portfolio/'.$unlinkImage));
+        $image = $request->file('image');
+        $ext = $image->extension();
+        $file = time() . '.' . $ext;
+        $image->move('uploads/portfolio', $file);
+        $data_update->image = $file;
+      }
+      $data_update->update();
+
+      session()->flash('msg', 'Updated successfully');
+      return redirect('portfolio-list');
+    
+    }
 }

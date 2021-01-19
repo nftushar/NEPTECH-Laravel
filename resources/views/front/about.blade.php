@@ -90,7 +90,7 @@
                                 <h2 class="text-white text-center p-3 fs-24">We Are Creative IT Agency</h2>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6"><br>
                             <div class="about-company">
                                 <img src="{{ asset('assets/images/title-logo.png')}}" alt="title-logo" class="c-m">
                                 <h2 class="c-h2 ">Mission of Nap Tech Labs</h2>
@@ -111,7 +111,7 @@
                                 <h2 class="text-white text-center p-3 fs-24">We Are Creative IT Agency</h2>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6"><br>
                             <div class="about-company">
                                 <img src="{{ asset('assets/images/title-logo.png')}}" alt="title-logo" class="c-m">
                                 <h2 class="c-h2 ">Vission of Nap Tech Labs</h2>

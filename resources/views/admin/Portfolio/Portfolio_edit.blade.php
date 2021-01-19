@@ -41,13 +41,13 @@
 @endif
 
 
-  {{-- <a href="list" class="btn btn-info" >Back to List</a> --}}
-    <form method="post" action="{{url('/updare/'.$datas->id)}}" enctype="multipart/form-data">
+  <a href="list" class="btn btn-info" >Back to List</a>
+    <form method="post" action="{{url('/portfolio-edit/'.$data->id)}}" enctype="multipart/form-data">
         @csrf
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="title">Title </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" name="title" class="form-control" value="{{ $datas->title }}" placeholder="Title">
+                <input type="text" name="title" class="form-control" value="{{ $data->title }}" placeholder="Title">
                 @error('title')
                 {{$message}}
                 @enderror
@@ -56,7 +56,7 @@
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="short_desc">Short Desc</label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea name="short_desc" cols="50" rows="5">{{ $datas->short_desc }}</textarea> 
+                <input type="text" name="short_desc" class="form-control" value="{{ $data->short_desc }}" placeholder="Title">
             </div>
             @error('short_desc')
                 {{$message}}
@@ -64,42 +64,26 @@
         </div>
 
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="lond_desc">Long Desc</label>
-            <div class="col-md-6 col-sm-6 ">
-                <div class="col-md-6 col-sm-6 ">
-                    <textarea name="lond_desc"  cols="50" rows="7">{{ $datas->lond_desc }}</textarea>
-                    @error('lond_desc')
-                    {{$message}}
-                    @enderror
-            </div>
-        </div>
-        <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align">Image </label>
 
             <div class="col-md-6 col-sm-6 ">
-                <input type="file" name="image" value="{{ $datas->image }}">
+                
+                {{-- <input type="file" name="image" value="{{ $data->image }}">
                 @error('image')
                 {{$message}}
-                @enderror
-            </div>
-        </div>
+                @enderror --}}
 
-        <div class="item form-group">
-            <label class="col-form-label  col-md-3 col-sm-3 col-lg-12 label-align">Added on </label>
+                <input type="file" name="image"}}">
+                <img src="{{ asset('uploads/portfolio/'.$data['image']) }}"  hight="200px" width="150px" >
+                @if($errors->first('image')) <span class="text-danger">{{ $errors->first('image') }}</span> @endif
 
-            <div class="col-md-6 col-sm-6 ">
-                <input type="date" name="added_on"  value="{{ $datas->added_on }}"  class="form-control">
-                @error('added_on')
-                {{$message}}
-                @enderror
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label  col-md-3 col-sm-3 col-lg-12 label-align">Post Date </label>
-
+            <label class="col-form-label  col-md-3 col-sm-3 col-lg-12 label-align">ADD Link</label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="date" name="post_date" class="form-control" value="{{ $datas->post_date }}">
-                @error('post_date')
+                <input type="text" name="link" class="form-control" value="{{ $data->link }}">
+                @error('link')
                 {{$message}}
                 @enderror
             </div>

@@ -21,17 +21,17 @@
                             {!! $item['short_desc'] !!}
                          
                         </a>
-                        <div class="blogcontent__left__info mb-80">
+                        {{-- <div class="blogcontent__left__info mb-80">
                             <a class="blogcontent__left__text fs-16">
                                 {!! $item['lond_desc'] !!}
                             </a>
-                            <span class="date__time"><a href="#"><i class="far fa-clock"></i> &nbsp;  {{ $item['post_date'] }} </a>
+                            <span class="date__time"><a href="#"><i class="far fa-clock"></i> &nbsp;  {{ $item['added_on'] }} </a>
                             </span>
                             <span class="post__author"><a href="#"><i class="far fa-user"></i> &nbsp;Mahmudul
                                 </a>
                             </span>
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
               @endforeach
@@ -61,7 +61,7 @@
 
                                             </p>
                                             <div class="blogcontent__left__info mb-80">
-                                                <span class="date__time"><a href="#"><i class="far fa-clock"></i> &nbsp; {{ $item['post_date'] }} </a>
+                                                <span class="date__time"><a href="#"><i class="far fa-clock"></i> &nbsp; {{ $item['added_on'] }} </a>
                                                 </span>
                                                 <span class="post__author"><a href="#"><i class="far fa-user"></i>
                                                         &nbsp;Mahmudul
@@ -115,7 +115,7 @@
                                                 </a>
                                                 <div class="blogcontent__left__info mt-100">
                                                     <span class="date__time"><a href="#"><i class="far fa-clock"></i>
-                                                            &nbsp; {{ $item['post_date'] }}    </a>
+                                                            &nbsp; {{ $item['added_on'] }}    </a>
                                                           
                                                     </span>
                                                     <span class="post__author"><a href="#"><i class="far fa-user"></i>

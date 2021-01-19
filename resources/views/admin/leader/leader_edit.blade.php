@@ -1,110 +1,90 @@
 @extends('admin.layout.layout')
 @section('content')
 
-    <div class="container-fluid "> 
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h4 class="page-title m-0">Dashboard</h4>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="float-right d-none d-md-block">
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="ti-settings mr-1"></i> Settings
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end page-title-box -->
-            </div>
-        </div> 
         <h2>Edit Post</h2>
-        @if (Session::has('message_sent'))
-    <div class="alert alert-success" roll="alert">
-        {{ Session::get('msg') }}
-    </div>
-@endif
+        @if (Session::has('msg'))
+            <div class="alert alert-success" roll="alert">
+                {{ Session::get('msg') }}
+            </div>
+        @endif
 
-
-  <a href="list" class="btn btn-info" >Back to List</a>
-    <form method="post" action="{{url('/updare/'.$datas->id)}}" enctype="multipart/form-data">
+  <a href="PostList" class="btn btn-info" >Back to List</a>
+    <form method="post" action="{{ route('admin.leader.update', $data->id) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT');
+        <input type="hidden" name="id" value="{{ $data->id}}">
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="title">Title </label>
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="name">Name </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" name="title" class="form-control" value="{{ $datas->title }}" placeholder="Title">
-                @error('title')
+                <input type="text" name="name" class="form-control" value="{{ $data->name }}" placeholder="Name">
+                @error('name')
+                {{$message}}
+                @enderror
+            </div>
+        </div>
+        
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="position">position </label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="text" name="position" class="form-control" value="{{ $data->position }}" placeholder="position">
+                @error('position')
                 {{$message}}
                 @enderror
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="short_desc">Short Desc</label>
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="facebook">facebook link</label>
             <div class="col-md-6 col-sm-6 ">
-                <textarea name="short_desc" cols="50" rows="5">{{ $datas->short_desc }}</textarea> 
-            </div>
-            @error('short_desc')
+                <input type="text" name="facebook" class="form-control" value="{{ $data->facebook }}" placeholder="facebook">
+                @error('facebook')
                 {{$message}}
                 @enderror
-        </div>
-
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="lond_desc">Long Desc</label>
-            <div class="col-md-6 col-sm-6 ">
-                <div class="col-md-6 col-sm-6 ">
-                    <textarea name="lond_desc"  cols="50" rows="7">{{ $datas->lond_desc }}</textarea>
-                    @error('lond_desc')
-                    {{$message}}
-                    @enderror
             </div>
         </div>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="linkedin">linkedin link</label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="text" name="linkedin" class="form-control" value="{{ $data->linkedin }}" placeholder="linkedin">
+                @error('linkedin')
+                {{$message}}
+                @enderror
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="twitter">twitter link</label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="text" name="twitter" class="form-control" value="{{ $data->twitter }}" placeholder="twitter">
+                @error('twitter')
+                {{$message}}
+                @enderror
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="twitter">envelope link</label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="text" name="envelope" class="form-control" value="{{ $data->envelope }}" placeholder="envelope">
+                @error('envelope')
+                {{$message}}
+                @enderror
+            </div>
+        </div>
+        
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align">Image </label>
-
             <div class="col-md-6 col-sm-6 ">
-                <input type="file" name="image" value="{{ $datas->image }}">
-                @error('image')
-                {{$message}}
-                @enderror
+                <input type="file" name="image">
+                <img src="{{ asset('uploads/leader/'.$data['image']) }}"  hight="200px" width="150px" >
+                @if($errors->first('image')) <span class="text-danger">{{ $errors->first('image') }}</span> @endif
             </div>
-        </div>
-
-        <div class="item form-group">
-            <label class="col-form-label  col-md-3 col-sm-3 col-lg-12 label-align">Added on </label>
-
-            <div class="col-md-6 col-sm-6 ">
-                <input type="date" name="added_on"  value="{{ $datas->added_on }}"  class="form-control">
-                @error('added_on')
-                {{$message}}
-                @enderror
-            </div>
+        
         </div>
         <div class="item form-group">
-            <label class="col-form-label  col-md-3 col-sm-3 col-lg-12 label-align">Post Date </label>
-
-            <div class="col-md-6 col-sm-6 ">
-                <input type="date" name="post_date" class="form-control" value="{{ $datas->post_date }}">
-                @error('post_date')
-                {{$message}}
-                @enderror
+            <div class="col-md-6 col-sm-6 offset-md-3">
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
-                <button type="button" class="btn btn-success">Submit</button>   
+              
     </form>
 </div>             
    <!-- end row -->  
@@ -112,4 +92,30 @@
 <!-- Loader -->
 
 
+@endsection
+
+@section('E-style')
+<link href="{{ asset('admin_assets/css/summernote-bs4.css')}}" rel="stylesheet" type="text/css">  
+{{-- <link href="{{ asset('admin_assets/css/summernote-bs4.css')}}" rel="stylesheet" type="text/css">   --}}
+@endsection
+
+@section('E-script')
+<script src="{{ asset('admin_assets/js/summernote-bs4.js')}}"></script>
+
+  
+<script>
+    $('#short_desc').summernote({
+        placeholder: 'Short Desctiption',
+        width: 1000,
+        height: 250
+    });
+</script>
+
+<script>
+    $('#lond_desc').summernote({
+        placeholder: 'Long Desctiption',
+        width: 1000,
+        height: 300
+    });
+</script>
 @endsection

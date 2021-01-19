@@ -59,6 +59,7 @@
                                             <th ><h6>{!! $list['insta'] !!}</h6></th>
                                             <th> 
                                                 <a href="sociallink-delete/{{ $list->id }}" class="btn btn-danger">Delete</a>
+                                                <a href="sociallink-edit/{{ $list->id }}" class="btn btn-info">Edit</a>
                                             </th>
                                            
                                         </tr>

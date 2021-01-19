@@ -12,12 +12,8 @@ class SocialController extends Controller
 
     function show()
     {
-        // return view('front.layout.layout');
-        // echo"Hello";
         $data =  Sociallink::all();
-        // echo($data);
           return view('front.layout.layout',['AllSociallink'=>$data]);
-        //   return view('front.index',['AllSociallink'=>$data]);
      }
 
      function listing()
@@ -30,16 +26,13 @@ class SocialController extends Controller
        
      function delete(Request $request, $id)
     {
-        // echo"Delete";
        $d = DB::table('sociallinks')->where('id', $id)->delete();
-    //    print_r($d);
         $request->session()->flash('msg', 'Data Delete');
         return redirect('sociallink-list');
     }
  
     function submit(Request $request)
     {    
-    //  echo"Hello"; 
       $request->validate([
           'facebook' => 'required',
           'twitter' => 'required',
@@ -51,17 +44,40 @@ class SocialController extends Controller
                  'twitter' => $request->input('twitter'),
                  'insta' => $request->input('insta'),     
              );
-    //  dd($data);
-    // echo" $data";
+
+
       $data_save = DB::table('sociallinks')->insert($data);
  //  dd($data_save);
-      if($data_save){
-          echo"data seved";
-      }else{
-         echo"data not seved";
-      }
-    //   $request->session()->flash('msg', 'List saved');
-    //   return redirect('sociallink-add');
+   
+      $request->session()->flash('msg', 'List saved');
+      return redirect('sociallink-list');
 
+    }
+
+    function ValueShow($id)
+    {
+        $data= Sociallink::find($id); 
+        return view('admin.sociallink.sociallink_edit',compact('data'));  
+    }
+    
+   function update(Request $request, $id)
+   {
+        $request->validate([
+            'facebook'       => 'required',
+            'twitter'  => 'required',
+            'insta'   => 'required',
+        ]);
+
+        $data_update= Sociallink::find($id);
+        $data_update->facebook      = $request->input('facebook');
+        $data_update->twitter = $request->input('twitter');
+        $data_update->insta  = $request->input('insta');
+ 
+
+      $data_update->update();
+
+      session()->flash('successmsg', 'Updated successfully');
+      return redirect('sociallink-list');
+    
     }
 }

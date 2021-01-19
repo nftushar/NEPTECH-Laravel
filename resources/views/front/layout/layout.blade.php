@@ -82,9 +82,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('career')}}">Career</a>
                         </li>
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="{{url('blog')}}">Blog</a>
-                        </li> --}}
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="{{url('contact-us')}}">Blog Another</a>
                         </li> --}}

@@ -10,24 +10,17 @@ class LeaderController extends Controller
     
     function listing()
     {
-        // echo"Hello";
         $data =  Leader::all();
-        // dd($data);
           return view('admin.leader.leader_list',['AllLeader'=>$data]);
-        //   return view('front.about',['AllLeader'=>$data]);
      }
 
  
      function show()
      {
-         // echo"Hello";
          $data =  Leader::get();
-        //  dd($data);
-        //    return view('front.about',['AllLeader'=>$data]);
       }
    function delete(Request $request, $id)
    {
-    //    echo"Delete";
        DB::table('leaders')->where('id', $id)->delete();
        $request->session()->flash('msg', 'Data Delete');
        return redirect('leader-list');
@@ -35,13 +28,11 @@ class LeaderController extends Controller
 
    function submit(Request $request)
    {   
-
      $request->validate([
          'name' => 'required',
          'image' => 'required',
          'position' => 'required',
      ]);
-                // echo"Hello";
                 $image = $request->file('image');
                 $ext = $image->extension();
                 $file = time() . '.' . $ext;
@@ -57,17 +48,56 @@ class LeaderController extends Controller
         'envelope' => $request->input('envelope')
     );
 
-    // dd($data);
-
      $data_save= DB::table('leaders')->insert($data);
-//  dd($data_save);
-    //  if($data_save){
-    //      echo"data seved";
-    //  }else{
-    //     echo"data not seved";
-    //  }
+
      $request->session()->flash('msg', 'Data saved');
      return redirect('leader-add');
    
    }
+
+   function ValueShow($id)
+    {
+        $data= Leader::find($id); 
+        // dd($data);
+        return view('admin.Leader.Leader_edit',compact('data'));  
+    }
+   
+   function update(Request $request, $id)
+   {
+     echo"Update";
+      //   $request->validate([
+      //     'name' => 'required',
+      //     'image' => 'required',
+      //     'position' => 'required',
+      //   ]);
+      //   // dd('$request');
+
+      //   $data_update= Leader::find($id);
+      //   $data_update->name      = $request->input('name');
+      //   $data_update->position = $request->input('position');
+      //   $data_update->facebook = $request->input('facebook');
+      //   $data_update->linkedin = $request->input('linkedin');
+      //   $data_update->twitter = $request->input('twitter');
+      //   $data_update->envelope = $request->input('envelope');
+      //   $unlinkImage = $data_update->image;
+
+ 
+      // if($request->has('image')){
+      //     $request->validate([
+      //       'image'       => 'image',
+      //     ]);
+      //     unlink(public_path('uploads/leader/'.$unlinkImage));
+      //   $image = $request->file('image');
+      //   $ext = $image->extension();
+      //   $file = time() . '.' . $ext;
+      //   $image->move('uploads/leader', $file);
+      //   $data_update->image = $file;
+      // }
+      // $data_update->update();
+      // session()->flash('msg', 'Updated successfully');
+      // return redirect('leader-list');
+    
+    }
+
+   
 }

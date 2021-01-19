@@ -28,7 +28,7 @@
 }
 
 .google-map-connect iframe {
-    height: 450px;
+    height: 415px;
 }
 
 /* ==============CONNECT SECTION END===============  */
@@ -36,6 +36,9 @@
 /* Media Query */
 
 @media (min-width:200px) and (max-width:600px) {
+        .google-map-connect iframe {
+
+            width: 350px;
     .c-h2 {
 
         font-size: 25px;

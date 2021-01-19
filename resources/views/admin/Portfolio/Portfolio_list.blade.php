@@ -61,6 +61,8 @@
                                                   <th ><h6>{{ $list['link'] }}</h6></th>
                                                   <th >{{ $list['colour'] }}</th>
                                                    <th>
+                                                <a href="portfolio-edit/{{ $list->id }}" class="btn btn-info">edit</a> 
+                                                    
                                                       {{-- <a href="{{ url('/portfolio-edit/'.$list->id) }}" class="btn btn-info">edit</a>  --}}
                                                       <a href="portfolio-delete/{{ $list->id }}" class="btn btn-danger">Delete</a>
                                                     </th>
