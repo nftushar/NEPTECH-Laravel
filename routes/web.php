@@ -114,6 +114,7 @@ Route::get('/expert-show', [ExpertController::class, 'show']);
 Route::view('/', 'front.index');
 Route::view('blog', 'front.blog');
 Route::get('blog', [UserPost::class,'show']);
+Route::get('Postsearch', [UserPost::class,'search'])->name("Postsearch");
 
 Route::get('bloganothet', [PostController::class,'AnotherShow']);
 

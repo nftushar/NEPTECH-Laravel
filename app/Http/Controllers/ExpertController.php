@@ -88,17 +88,17 @@ class ExpertController extends Controller
 
   
           if($request->has('image')){
-            $request->validate([
-              'image'       => 'image',
-            ]);
-            unlink(public_path('uploads/expertTeam/'.$unlinkImage));
+                $request->validate([
+                  'image'       => 'image',
+                ]);
+                unlink(public_path('uploads/expertTeam/'.$unlinkImage));
 
-          $image = $request->file('image');
-          $ext = $image->extension();
-          $file = time() . '.' . $ext;
-          $image->move('uploads/expertTeam', $file);
-          $data_update->image = $file;
-        }
+              $image = $request->file('image');
+              $ext = $image->extension();
+              $file = time() . '.' . $ext;
+              $image->move('uploads/expertTeam', $file);
+              $data_update->image = $file;
+          }
         $data_update->update();
 
         session()->flash('msg', 'Updated successfully');

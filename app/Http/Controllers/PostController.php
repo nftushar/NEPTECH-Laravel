@@ -31,7 +31,6 @@ function AnotherShow(){
 
     function submit(Request $request)
     {    
-     // echo"Hello"; 
       $request->validate([
         'title'       => 'required',
         'short_desc'  => 'required',
@@ -99,5 +98,21 @@ function AnotherShow(){
       return redirect('PostList');
     
     }
+
+
+    // search
+
+    function search(){
+
+      $data =  Post::all();
+       return view('front.blog',['SearchPosts'=>$data]);
+
+
+
+    }
+
+
+
+
 
 }

@@ -1,6 +1,7 @@
 @extends('admin.layout.layout')
 @section('content')
 
+    <div class="container"> 
         <h2>Edit Post</h2>
         @if (Session::has('msg'))
             <div class="alert alert-success" roll="alert">

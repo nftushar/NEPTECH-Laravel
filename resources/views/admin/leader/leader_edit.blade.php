@@ -1,6 +1,8 @@
 @extends('admin.layout.layout')
 @section('content')
 
+    <div class="container"> 
+
 
         <h2>Edit Post</h2>
         @if (Session::has('msg'))
@@ -9,10 +11,11 @@
             </div>
         @endif
 
-  <a href="PostList" class="btn btn-info" >Back to List</a>
+  <a href="leader-list" class="btn btn-info" >Back to List</a>
     <form method="post" action="{{ route('admin.leader.update', $data->id) }}" enctype="multipart/form-data">
         @csrf
-        @method('PUT');
+        @method('PUT')
+         
         <input type="hidden" name="id" value="{{ $data->id}}">
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 col-lg-12 label-align" for="name">Name </label>

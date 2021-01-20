@@ -51,7 +51,7 @@ class LeaderController extends Controller
      $data_save= DB::table('leaders')->insert($data);
 
      $request->session()->flash('msg', 'Data saved');
-     return redirect('leader-add');
+     return redirect('leader-list');
    
    }
 
@@ -64,38 +64,38 @@ class LeaderController extends Controller
    
    function update(Request $request, $id)
    {
-     echo"Update";
-      //   $request->validate([
-      //     'name' => 'required',
-      //     'image' => 'required',
-      //     'position' => 'required',
-      //   ]);
-      //   // dd('$request');
+    //  echo"Update";
+        $request->validate([
+          'name' => 'required',
+          'image' => 'required',
+          'position' => 'required',
+        ]);
+        // dd('$request');
 
-      //   $data_update= Leader::find($id);
-      //   $data_update->name      = $request->input('name');
-      //   $data_update->position = $request->input('position');
-      //   $data_update->facebook = $request->input('facebook');
-      //   $data_update->linkedin = $request->input('linkedin');
-      //   $data_update->twitter = $request->input('twitter');
-      //   $data_update->envelope = $request->input('envelope');
-      //   $unlinkImage = $data_update->image;
+        $data_update= Leader::find($id);
+        $data_update->name      = $request->input('name');
+        $data_update->position = $request->input('position');
+        $data_update->facebook = $request->input('facebook');
+        $data_update->linkedin = $request->input('linkedin');
+        $data_update->twitter = $request->input('twitter');
+        $data_update->envelope = $request->input('envelope');
+        $unlinkImage = $data_update->image;
 
  
-      // if($request->has('image')){
-      //     $request->validate([
-      //       'image'       => 'image',
-      //     ]);
-      //     unlink(public_path('uploads/leader/'.$unlinkImage));
-      //   $image = $request->file('image');
-      //   $ext = $image->extension();
-      //   $file = time() . '.' . $ext;
-      //   $image->move('uploads/leader', $file);
-      //   $data_update->image = $file;
-      // }
-      // $data_update->update();
-      // session()->flash('msg', 'Updated successfully');
-      // return redirect('leader-list');
+      if($request->has('image')){
+          $request->validate([
+            'image'       => 'mims:jpg,phg.gif',
+          ]);
+          unlink(public_path('uploads/leader/'.$unlinkImage));
+        $image = $request->file('image');
+        $ext = $image->extension();
+        $file = time() . '.' . $ext;
+        $image->move('uploads/leader', $file);
+        $data_update->image = $file;
+      }
+      $data_update->update();
+      session()->flash('msg', 'Updated successfully');
+      return redirect('leader-list');
     
     }
 
